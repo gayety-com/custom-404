@@ -5,7 +5,7 @@ Description: Redirects all 404 errors to the home page and shows a message "That
 Version: 1.0
 Author: Jeff Kaufman
 */
-
+ 
 // Disable WP's "guess" redirect behavior
 remove_action( 'template_redirect', 'redirect_canonical' );
 
