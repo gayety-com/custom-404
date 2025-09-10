@@ -2,10 +2,10 @@
 /*
 Plugin Name: 00 Gayety Custom 404 Redirect to Home
 Description: Redirects all 404 errors to the home page and shows a message "That page does not exist."
-Version: 1.0
+Version: 1.1
 Author: Jeff Kaufman
 */
- 
+
 // Disable WP's "guess" redirect behavior
 remove_action( 'template_redirect', 'redirect_canonical' );
 
@@ -21,13 +21,17 @@ function cfrh_redirect_404_to_home() {
 add_action( 'template_redirect', 'cfrh_redirect_404_to_home' );
 
 /**
- * Display the "That page does not exist." message on the homepage
+ * Add a JavaScript alert on the homepage if notfound=1 is set
  */
-function cfrh_show_notfound_message() {
+function cfrh_show_notfound_alert() {
     if ( isset($_GET['notfound']) && $_GET['notfound'] == '1' ) {
-        echo '<div style="background:#f8d7da;color:#721c24;padding:12px;margin:12px 0;border:1px solid #f5c6cb;border-radius:4px;">
-                That page does not exist.
-              </div>';
+        ?>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                alert("That page does not exist.");
+            });
+        </script>
+        <?php
     }
 }
-add_action( 'wp_body_open', 'cfrh_show_notfound_message' );
+add_action( 'wp_footer', 'cfrh_show_notfound_alert' );
