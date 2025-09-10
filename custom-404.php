@@ -14,7 +14,7 @@ remove_action( 'template_redirect', 'redirect_canonical' );
  */
 function cfrh_redirect_404_to_home() {
     if ( is_404() ) {
-        wp_redirect( home_url( '/?notfound=1' ) );
+        wp_redirect( home_url( '/' ) );
         exit;
     }
 }
