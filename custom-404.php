@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: 00 Gayety Custom 404 Redirect to Home
-Description: Redirects all 404 errors to the home page and shows a message "That page does not exist."
-Version: 1.1
+Description: Redirects all 404 errors to the home page and shows a JavaScript popup "That page does not exist." Removes the query string after showing.
+Version: 1.2
 Author: Jeff Kaufman
 */
 
@@ -29,6 +29,12 @@ function cfrh_show_notfound_alert() {
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 alert("That page does not exist.");
+                // Remove ?notfound=1 from the URL without reloading
+                if (window.history.replaceState) {
+                    let url = new URL(window.location);
+                    url.searchParams.delete("notfound");
+                    window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+                }
             });
         </script>
         <?php
