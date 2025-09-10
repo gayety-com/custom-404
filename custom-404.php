@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: 00 Gayety Custom 404 Redirect to Home
+Plugin Name: 00 Gayety Custom 404 - Redirect to Home
 Description: Redirects all 404 errors to the home page and shows a JavaScript popup "That page does not exist." Removes the query string after showing.
 Version: 1.2
 Author: Jeff Kaufman
